@@ -1,0 +1,29 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    # 服务消费者应用名
+    name: userInfoConsumer
+  cloud:
+    nacos:
+      discovery:
+        # nacos注册中心地址
+        server-addr: 127.0.0.1:8848
+    # sentinel dashboard配置
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
+
+# 将所有节点注册到nacos
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# 开启feign的sentinel支持, 默认为关闭状态
+feign:
+  sentinel:
+    enabled: true

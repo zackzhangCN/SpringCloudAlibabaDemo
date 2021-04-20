@@ -1,0 +1,42 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    # 服务消费者应用名
+    name: userInfoApiGateway
+  cloud:
+    nacos:
+      discovery:
+        # nacos注册中心地址
+        server-addr: 127.0.0.1:8848
+    # sentinel dashboard配置
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
+    # spring cloud gateway配置
+    gateway:
+      # 设置与服务注册发现组件结合，这样可以采用服务名的路由策略
+      discovery:
+        locator:
+          enabled: true
+      # 配置路由规则
+      routes:
+      # 路由id, 需要唯一
+      - id: userInfo_consumer_router
+        # 使用lb直接路由到注册中心的服务名, 格式lb://注册到nacos的服务名
+        uri: lb://userInfoConsumer
+        predicates:
+        - Method=GET,POST
+      - id: userInfo_consumer_router
+        uri: lb://userInfoProvider
+        predicates:
+        - Method=GET,POST
+
+# 将所有节点注册到nacos
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
