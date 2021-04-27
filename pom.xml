@@ -44,7 +44,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- 声明SpringBootParent版本 -->
+            <!-- 声明SpringCloudAlibaba版本 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
