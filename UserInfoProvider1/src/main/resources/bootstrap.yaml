@@ -12,11 +12,6 @@ spring:
     name: userInfoProvider
   cloud:
     nacos:
-      # 指定nacos配置中心的地址,以及要使用的配置文件
-      config:
-        name: userInfoProvider-config
-        file-extension: yaml
-        server-addr: 127.0.0.1:8848
       discovery:
         # nacos注册中心地址
         server-addr: 127.0.0.1:8848
