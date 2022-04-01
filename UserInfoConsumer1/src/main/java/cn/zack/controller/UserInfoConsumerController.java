@@ -1,6 +1,7 @@
 package cn.zack.controller;
 
 import cn.zack.feign.UserInfoProviderFeign;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +16,8 @@ public class UserInfoConsumerController {
     private UserInfoProviderFeign userInfoProviderFeign;
 
     @GetMapping(path = "testFun1")
-    public String testFun1() {
-        String result = userInfoProviderFeign.fun1();
+    public JSONObject testFun1() {
+        JSONObject result = userInfoProviderFeign.fun1();
         return result;
     }
 }

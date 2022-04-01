@@ -1,5 +1,6 @@
 package cn.zack.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserInfoProviderController {
 
     @GetMapping(path = "fun1")
-    public String fun1() {
-        return "调用了userInfoProvider2, 方法: fun1";
+    public JSONObject fun1() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("result", "调用了userInfoProvider2, 方法: fun1, configTest=");
+        return jsonObject;
     }
 }
